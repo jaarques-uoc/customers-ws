@@ -1,0 +1,13 @@
+spring:
+  security:
+    user:
+      name: admin
+      password: 1234
+
+management:
+  security:
+    enabled: false
+  endpoints:
+    web:
+      exposure:
+        include: "*"
