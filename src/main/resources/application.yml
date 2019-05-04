@@ -5,8 +5,6 @@ spring:
       password: 1234
 
 management:
-  security:
-    enabled: false
   endpoints:
     web:
       exposure:
