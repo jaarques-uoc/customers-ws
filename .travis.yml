@@ -18,6 +18,7 @@ before_install:
 
 script:
   - docker build --tag jaarquesuoc/customers-service .
+  - docker tag jaarquesuoc/customers-service registry.heroku.com/$HEROKU_APP_NAME/web
 
 deploy:
   provider: script
