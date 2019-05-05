@@ -1,4 +1,4 @@
-# customers-service
+# customers-service [![Build Status](https://travis-ci.com/jaarques-uoc/customers-service.svg?branch=master)](https://travis-ci.com/jaarques-uoc/customers-service)
 
 Command line tools:
 * Spring boot:
