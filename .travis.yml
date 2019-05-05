@@ -17,13 +17,13 @@ before_install:
   - echo "$HEROKU_PASSWORD" | docker login -u "$HEROKU_USERNAME" --password-stdin registry.heroku.com
 
 script:
-  - docker build --tag jaarquesuoc/customers-service .
-  - docker tag jaarquesuoc/customers-service registry.heroku.com/$HEROKU_APP_NAME/web
+  - docker build --tag $DOCKER_USERNAME/$APP_NAME .
+  - docker tag $DOCKER_USERNAME/$APP_NAME registry.heroku.com/$APP_NAME/web
 
 deploy:
   provider: script
   script:
     # push to dockerhub & heroku
-    docker push jaarquesuoc/customers-service;
-    docker push registry.heroku.com/$HEROKU_APP_NAME/web;
-    heroku container:release web --app $HEROKU_APP_NAME;
+    docker push $DOCKER_USERNAME/$APP_NAME;
+    docker push registry.heroku.com/$APP_NAME/web;
+    heroku container:release web --app $APP_NAME;
