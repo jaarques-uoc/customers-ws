@@ -17,7 +17,7 @@ eureka:
   # heroku deployment
   client.serviceUrl.defaultZone: https://eureka-ws.herokuapp.com/eureka
   instance:
-    hostname: ${DOMAIN_NAME:customers-ws.herokuapp.com}
+    hostname: customers-ws.herokuapp.com
 
 server:
   port: ${PORT:7001}
