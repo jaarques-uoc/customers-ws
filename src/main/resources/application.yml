@@ -11,11 +11,13 @@ management:
       exposure:
         include: "*"
 
-# local testing
-# eureka.client.serviceUrl.defaultZone: http://localhost:7100/eureka
-
-# heroku deployment
-eureka.client.serviceUrl.defaultZone: https://eureka-ws.herokuapp.com/eureka
+eureka:
+  # local testing
+  #client.serviceUrl.defaultZone: http://localhost:7100/eureka
+  # heroku deployment
+  client.serviceUrl.defaultZone: https://eureka-ws.herokuapp.com/eureka
+  instance:
+    hostname: ${DOMAIN_NAME:customers-ws.herokuapp.com}
 
 server:
   port: ${PORT:7001}
