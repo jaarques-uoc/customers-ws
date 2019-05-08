@@ -1,16 +1,16 @@
-# customers-service [![Build Status](https://travis-ci.com/jaarques-uoc/customers-service.svg?branch=master)](https://travis-ci.com/jaarques-uoc/customers-service)
+# customers-ws [![Build Status](https://travis-ci.com/jaarques-uoc/customers-ws.svg?branch=master)](https://travis-ci.com/jaarques-uoc/customers-ws)
 
 Command line tools:
 * Spring boot:
     * build: `./gradlew build`
     * run: `./gradlew bootRun`
 * Docker:
-    * build: `docker build --tag=customers .`
-    * run: `docker run -p 7001:8080 -t customers`
-    * stop: `docker stop $(docker ps -q --filter ancestor=customers)`
+    * build: `docker build --tag=customers-ws .`
+    * run: `docker run -p 7001:8080 -t customers-ws`
+    * stop: `docker stop $(docker ps -q --filter ancestor=customers-ws)`
     * stop all containers: `docker stop $(docker ps -a -q)`
 
 * Urls:
-    * Travis CI history: https://travis-ci.com/jaarques-uoc/customers-service/
-    * Docker image: https://cloud.docker.com/repository/docker/jaarquesuoc/customers-service
-    * Heroku app health-check: https://customers-service.herokuapp.com/actuator/health
+    * Travis CI history: https://travis-ci.com/jaarques-uoc/customers-ws/
+    * Docker image: https://cloud.docker.com/repository/docker/jaarquesuoc/customers-ws
+    * Heroku app health-check: https://customers-ws.herokuapp.com/actuator/health
