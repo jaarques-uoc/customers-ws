@@ -15,11 +15,11 @@ eureka:
   # local testing
   #client.serviceUrl.defaultZone: http://localhost:7100/eureka
   # heroku deployment
-  client.serviceUrl.defaultZone: https://eureka-ws.herokuapp.com/eureka
+  client.serviceUrl.defaultZone: ${EUREKA_URL:http://localhost:7100/eureka}
   instance:
-    hostname: customers-ws.herokuapp.com
-    non-secure-port: 80
-    secure-port: 80
+    hostname: ${HOSTNAME:localhost}
+    non-secure-port: ${PUBLIC_PORT:7001}
+    secure-port: ${PUBLIC_PORT:7001}
 
 server:
   port: ${PORT:7001}
