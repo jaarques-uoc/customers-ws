@@ -18,6 +18,7 @@ eureka:
   client.serviceUrl.defaultZone: https://eureka-ws.herokuapp.com/eureka
   instance:
     hostname: customers-ws.herokuapp.com
+    non-secure-port: 80
 
 server:
   port: ${PORT:7001}
