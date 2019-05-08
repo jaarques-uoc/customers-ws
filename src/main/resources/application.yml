@@ -12,9 +12,6 @@ management:
         include: "*"
 
 eureka:
-  # local testing
-  #client.serviceUrl.defaultZone: http://localhost:7100/eureka
-  # heroku deployment
   client.serviceUrl.defaultZone: ${EUREKA_URL:http://localhost:7100/eureka}
   instance:
     hostname: ${HOSTNAME:localhost}
