@@ -8,7 +8,11 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 public class TestConfigurer extends WebSecurityConfigurerAdapter {
     @Override
     public void configure(HttpSecurity http) throws Exception{
-        http.authorizeRequests().antMatchers("/customers/*").permitAll();
+        http.cors()
+            .and()
+            .authorizeRequests()
+            .antMatchers("/customers*")
+            .permitAll();
         super.configure(http);
     }
 }
