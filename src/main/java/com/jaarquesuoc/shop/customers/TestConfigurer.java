@@ -9,7 +9,7 @@ public class TestConfigurer extends WebSecurityConfigurerAdapter {
     @Override
     public void configure(HttpSecurity http) throws Exception{
         http.authorizeRequests()
-            .antMatchers("/customers*")
+            .antMatchers("/customers/*")
             .permitAll();
         super.configure(http);
     }
