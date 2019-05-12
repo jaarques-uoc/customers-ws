@@ -1,6 +1,6 @@
 package com.jaarquesuoc.shop.customers.controllers;
 
-import com.jaarquesuoc.shop.customers.dtos.Customer;
+import com.jaarquesuoc.shop.customers.dtos.CustomerDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -17,8 +17,8 @@ import java.util.stream.IntStream;
 public class CustomersController {
 
     @GetMapping("/customers/{id}")
-    public Customer getCustomer(@PathVariable final String id) {
-        return Customer.builder()
+    public CustomerDto getCustomer(@PathVariable final String id) {
+        return CustomerDto.builder()
             .id(id)
             .email("test@email.com")
             .fullName("Test full name")
@@ -29,7 +29,7 @@ public class CustomersController {
     }
 
     @GetMapping("/customers")
-    public List<Customer> getCustomers() {
+    public List<CustomerDto> getCustomers() {
         return IntStream.range(0, 10)
             .mapToObj(i -> getCustomer(String.valueOf(i)))
             .collect(Collectors.toList());

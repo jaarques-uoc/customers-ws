@@ -7,7 +7,7 @@ import java.time.LocalDateTime;
 
 @Data
 @Builder
-public class Customer {
+public class CustomerDto {
 
     private String id;
 
