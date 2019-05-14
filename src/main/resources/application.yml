@@ -1,5 +1,8 @@
 spring:
   application.name: customers-ws
+  data:
+    mongodb:
+      uri: ${MONGODB_URI:mongodb://localhost:27017/mongodb}
   security:
     user:
       name: admin
