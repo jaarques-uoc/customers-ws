@@ -1,6 +1,7 @@
 package com.jaarquesuoc.shop.customers.controllers;
 
 import com.jaarquesuoc.shop.customers.dtos.CustomerDto;
+import com.jaarquesuoc.shop.customers.dtos.InitialisationDto;
 import com.jaarquesuoc.shop.customers.services.CustomersService;
 import com.jaarquesuoc.shop.customers.services.SessionsService;
 import lombok.RequiredArgsConstructor;
@@ -8,7 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.List;
+import static com.jaarquesuoc.shop.customers.dtos.InitialisationDto.InitialisationStatus.OK;
 
 @RestController
 @RequiredArgsConstructor(onConstructor = @__(@Autowired))
@@ -19,11 +20,16 @@ public class InitialisationController {
     private final SessionsService sessionsService;
 
     @GetMapping("/init")
-    public List<CustomerDto> initialiseDB() {
+    public InitialisationDto initialiseDB() {
         customersService.cleanDb();
+
         sessionsService.adminSignup(buildAdmin());
         sessionsService.customerSignup(buildSimpleCustomer());
-        return customersService.getAllCustomerDtos();
+
+        return InitialisationDto.builder()
+            .initialisationStatus(OK)
+            .metadata(customersService.getAllCustomerDtos())
+            .build();
     }
 
     private CustomerDto buildAdmin() {
