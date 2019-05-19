@@ -7,7 +7,7 @@ import java.util.Optional;
 
 public interface CustomersRepository extends MongoRepository<Customer, String> {
 
-    Optional<Customer> findByEmailAndPassword(final String email, final String password);
+    Optional<Customer> findByEmail(final String email);
 
     Long countByEmail(final String email);
 }

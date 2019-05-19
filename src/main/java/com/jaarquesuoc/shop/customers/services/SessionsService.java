@@ -15,11 +15,11 @@ import static com.jaarquesuoc.shop.customers.dtos.CustomerType.CUSTOMER;
 @RequiredArgsConstructor(onConstructor = @__(@Autowired))
 public class SessionsService {
 
+    private final EncryptionService encryptionService;
+
     private final CustomersService customersService;
 
     public Optional<CustomerDto> login(final CustomerDto customerDto) {
-        customerDto.setPassword(encryptPassword(customerDto.getPassword()));
-
         return customersService.getCustomerDtoByEmailAndPassword(customerDto);
     }
 
@@ -32,17 +32,9 @@ public class SessionsService {
     }
 
     public Optional<CustomerDto> signup(final CustomerDto customerDto, final CustomerType customerType) {
-        customerDto.setPassword(encryptPassword(customerDto.getPassword()));
+        customerDto.setPassword(encryptionService.encryptPassword(customerDto.getPassword()));
         customerDto.setType(customerType);
 
         return customersService.createCustomerDto(customerDto);
-    }
-
-    private String encryptPassword(final String password) {
-        // Generate random salt
-
-        // Encrypt salt + pwd
-
-        return password;
     }
 }
