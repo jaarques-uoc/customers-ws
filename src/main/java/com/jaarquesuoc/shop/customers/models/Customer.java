@@ -1,9 +1,11 @@
-package com.jaarquesuoc.shop.customers.dtos;
+package com.jaarquesuoc.shop.customers.models;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.index.Indexed;
 
 import java.time.LocalDateTime;
 
@@ -11,10 +13,12 @@ import java.time.LocalDateTime;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class CustomerDto {
+public class Customer {
 
+    @Id
     private String id;
 
+    @Indexed(unique=true)
     private String email;
 
     private String password;
@@ -25,7 +29,8 @@ public class CustomerDto {
 
     private String country;
 
-    private LocalDateTime date;
+    @Builder.Default()
+    private LocalDateTime date = LocalDateTime.now();
 
-    private CustomerType type;
+    private String type;
 }
