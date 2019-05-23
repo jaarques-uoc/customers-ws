@@ -33,20 +33,20 @@ public class InitialisationController {
     }
 
     private CustomerDto buildAdmin() {
-        return buildCustomer("admin@uoc.com");
+        return buildCustomer("admin@uoc.edu", "Admin user");
     }
 
     private CustomerDto buildSimpleCustomer() {
-        return buildCustomer("customer@uoc.com");
+        return buildCustomer("user@uoc.edu", "Normal user");
     }
 
-    private CustomerDto buildCustomer(final String email) {
+    private CustomerDto buildCustomer(final String email, final String fullName) {
         return CustomerDto.builder()
             .email(email)
             .password("1234")
-            .fullName("UOC admin")
-            .address("Some random address")
-            .country("Some random country")
+            .fullName(fullName)
+            .address("Random Address street, 123")
+            .country("Andorra")
             .build();
     }
 }
