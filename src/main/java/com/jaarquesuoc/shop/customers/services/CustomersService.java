@@ -12,8 +12,6 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.Optional;
 
-import static java.util.stream.Collectors.toList;
-
 @Service
 @RequiredArgsConstructor(onConstructor = @__(@Autowired))
 public class CustomersService {
@@ -23,9 +21,9 @@ public class CustomersService {
     private final CustomersRepository customersRepository;
 
     public List<CustomerDto> getAllCustomerDtos() {
-        return customersRepository.findAll().stream()
-            .map(CustomersMapper.INSTANCE::toCustomerDto)
-            .collect(toList());
+        List<Customer> customers = customersRepository.findAll();
+
+        return CustomersMapper.INSTANCE.toCustomerDtos(customers);
     }
 
     public Optional<CustomerDto> getCustomerDtoById(final String id) {

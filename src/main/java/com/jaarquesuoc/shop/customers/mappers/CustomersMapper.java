@@ -6,6 +6,8 @@ import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.factory.Mappers;
 
+import java.util.List;
+
 @Mapper
 public interface CustomersMapper {
 
@@ -17,4 +19,6 @@ public interface CustomersMapper {
     @Mapping(target = "id", ignore = true)
     @Mapping(target = "date", ignore = true)
     Customer toCustomer(CustomerDto customerDto);
+
+    List<CustomerDto> toCustomerDtos(List<Customer> customers);
 }
