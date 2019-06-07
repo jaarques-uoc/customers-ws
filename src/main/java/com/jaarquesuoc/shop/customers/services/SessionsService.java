@@ -2,6 +2,7 @@ package com.jaarquesuoc.shop.customers.services;
 
 import com.jaarquesuoc.shop.customers.dtos.CustomerDto;
 import com.jaarquesuoc.shop.customers.dtos.CustomerType;
+import com.jaarquesuoc.shop.customers.mappers.CustomersMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -20,7 +21,9 @@ public class SessionsService {
     private final CustomersService customersService;
 
     public Optional<CustomerDto> login(final CustomerDto customerDto) {
-        return customersService.getCustomerDtoByEmailAndPassword(customerDto);
+        return customersService.getCustomerByEmail(customerDto)
+            .filter(customer -> encryptionService.matchesPassword(customerDto.getPassword(), customer.getPassword()))
+            .map(CustomersMapper.INSTANCE::toCustomerDto);
     }
 
     public Optional<CustomerDto> customerSignup(final CustomerDto customerDto) {

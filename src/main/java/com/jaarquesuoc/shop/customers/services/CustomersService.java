@@ -16,8 +16,6 @@ import java.util.Optional;
 @RequiredArgsConstructor(onConstructor = @__(@Autowired))
 public class CustomersService {
 
-    private final EncryptionService encryptionService;
-
     private final CustomersRepository customersRepository;
 
     public List<CustomerDto> getAllCustomerDtos() {
@@ -31,10 +29,8 @@ public class CustomersService {
             .map(CustomersMapper.INSTANCE::toCustomerDto);
     }
 
-    public Optional<CustomerDto> getCustomerDtoByEmailAndPassword(final CustomerDto customerDto) {
-        return customersRepository.findByEmail(customerDto.getEmail())
-            .filter(customer -> encryptionService.matchesPassword(customerDto.getPassword(), customer.getPassword()))
-            .map(CustomersMapper.INSTANCE::toCustomerDto);
+    public Optional<Customer> getCustomerByEmail(final CustomerDto customerDto) {
+        return customersRepository.findByEmail(customerDto.getEmail());
     }
 
     public Optional<CustomerDto> createCustomerDto(final CustomerDto customerDto) {
