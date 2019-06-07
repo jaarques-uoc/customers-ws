@@ -2,7 +2,7 @@ package com.jaarquesuoc.shop.customers.services;
 
 import com.jaarquesuoc.shop.customers.dtos.CustomerDto;
 import com.jaarquesuoc.shop.customers.exceptions.UserExistsException;
-import com.jaarquesuoc.shop.customers.mappers.CustomerMapper;
+import com.jaarquesuoc.shop.customers.mappers.CustomersMapper;
 import com.jaarquesuoc.shop.customers.models.Customer;
 import com.jaarquesuoc.shop.customers.repositories.CustomersRepository;
 import lombok.RequiredArgsConstructor;
@@ -24,19 +24,19 @@ public class CustomersService {
 
     public List<CustomerDto> getAllCustomerDtos() {
         return customersRepository.findAll().stream()
-            .map(CustomerMapper.INSTANCE::toCustomerDto)
+            .map(CustomersMapper.INSTANCE::toCustomerDto)
             .collect(toList());
     }
 
     public Optional<CustomerDto> getCustomerDtoById(final String id) {
         return customersRepository.findById(id)
-            .map(CustomerMapper.INSTANCE::toCustomerDto);
+            .map(CustomersMapper.INSTANCE::toCustomerDto);
     }
 
     public Optional<CustomerDto> getCustomerDtoByEmailAndPassword(final CustomerDto customerDto) {
         return customersRepository.findByEmail(customerDto.getEmail())
             .filter(customer -> encryptionService.matchesPassword(customerDto.getPassword(), customer.getPassword()))
-            .map(CustomerMapper.INSTANCE::toCustomerDto);
+            .map(CustomersMapper.INSTANCE::toCustomerDto);
     }
 
     public Optional<CustomerDto> createCustomerDto(final CustomerDto customerDto) {
@@ -44,8 +44,8 @@ public class CustomersService {
             throw new UserExistsException(customerDto.getEmail());
         }
 
-        Customer customer = CustomerMapper.INSTANCE.toCustomer(customerDto);
-        CustomerDto createdCustomerDto = CustomerMapper.INSTANCE.toCustomerDto(customersRepository.save(customer));
+        Customer customer = CustomersMapper.INSTANCE.toCustomer(customerDto);
+        CustomerDto createdCustomerDto = CustomersMapper.INSTANCE.toCustomerDto(customersRepository.save(customer));
 
         return Optional.ofNullable(createdCustomerDto);
     }

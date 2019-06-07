@@ -7,9 +7,9 @@ import org.mapstruct.Mapping;
 import org.mapstruct.factory.Mappers;
 
 @Mapper
-public interface CustomerMapper {
+public interface CustomersMapper {
 
-    CustomerMapper INSTANCE = Mappers.getMapper(CustomerMapper.class);
+    CustomersMapper INSTANCE = Mappers.getMapper(CustomersMapper.class);
 
     @Mapping(target = "password", ignore = true)
     CustomerDto toCustomerDto(Customer customer);
