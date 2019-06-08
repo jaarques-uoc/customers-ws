@@ -13,9 +13,10 @@ public interface CustomersMapper {
 
     CustomersMapper INSTANCE = Mappers.getMapper(CustomersMapper.class);
 
-    @Mapping(target = "encryptedPassword", ignore = true)
+    @Mapping(target = "password", ignore = true)
     CustomerDto toCustomerDto(Customer customer);
 
+    @Mapping(target = "encryptedPassword", source = "password")
     @Mapping(target = "id", ignore = true)
     @Mapping(target = "date", ignore = true)
     Customer toCustomer(CustomerDto customerDto);
