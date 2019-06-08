@@ -17,8 +17,8 @@ Command line tools:
 
 Initialization endpoint:
 * `curl localhost:7001/init`: It initialises the application with 2 customers:
-    * Email: admin@uoc.edu, password: 1234 -> User with admin access
-    * Email: user@uoc.edu, password: 1234 -> User with normal access
+    * Email: `admin@uoc.edu`, password: `1234` -> User with admin access
+    * Email: `user@uoc.edu`, password: `1234` -> User with normal access
 
 Monitoring urls:
 * Travis CI history: https://travis-ci.com/jaarques-uoc/customers-ws/
