@@ -21,7 +21,7 @@ public class SessionsService {
     private final CustomersService customersService;
 
     public Optional<CustomerDto> login(final CustomerDto customerDto) {
-        return customersService.getCustomerByEmail(customerDto)
+        return customersService.getCustomerByEmail(customerDto.getEmail())
             .filter(customer -> encryptionService.matchesPassword(customerDto.getPassword(), customer.getPassword()))
             .map(CustomersMapper.INSTANCE::toCustomerDto);
     }

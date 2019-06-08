@@ -24,13 +24,13 @@ public class CustomersService {
         return CustomersMapper.INSTANCE.toCustomerDtos(customers);
     }
 
-    public Optional<CustomerDto> getCustomerDtoById(final String id) {
+    public Optional<CustomerDto> getCustomerDto(final String id) {
         return customersRepository.findById(id)
             .map(CustomersMapper.INSTANCE::toCustomerDto);
     }
 
-    public Optional<Customer> getCustomerByEmail(final CustomerDto customerDto) {
-        return customersRepository.findByEmail(customerDto.getEmail());
+    public Optional<Customer> getCustomerByEmail(final String email) {
+        return customersRepository.findByEmail(email);
     }
 
     public Optional<CustomerDto> createCustomerDto(final CustomerDto customerDto) {

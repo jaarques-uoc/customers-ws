@@ -20,7 +20,7 @@ public class CustomersController {
 
     @GetMapping("/customers/{id}")
     public CustomerDto getCustomer(@PathVariable final String id) {
-        return customersService.getCustomerDtoById(id)
+        return customersService.getCustomerDto(id)
             .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
     }
 
