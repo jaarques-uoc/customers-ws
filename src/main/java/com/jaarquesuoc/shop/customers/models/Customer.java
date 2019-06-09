@@ -32,5 +32,5 @@ public class Customer {
     @Builder.Default()
     private LocalDateTime date = LocalDateTime.now();
 
-    private String type;
+    private String role;
 }
