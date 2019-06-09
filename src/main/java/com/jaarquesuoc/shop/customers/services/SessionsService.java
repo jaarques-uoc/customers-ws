@@ -1,7 +1,7 @@
 package com.jaarquesuoc.shop.customers.services;
 
 import com.jaarquesuoc.shop.customers.dtos.CustomerDto;
-import com.jaarquesuoc.shop.customers.dtos.CustomerType;
+import com.jaarquesuoc.shop.customers.dtos.CustomerRole;
 import com.jaarquesuoc.shop.customers.mappers.CustomersMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,8 +9,8 @@ import org.springframework.stereotype.Service;
 
 import java.util.Optional;
 
-import static com.jaarquesuoc.shop.customers.dtos.CustomerType.ADMIN;
-import static com.jaarquesuoc.shop.customers.dtos.CustomerType.CUSTOMER;
+import static com.jaarquesuoc.shop.customers.dtos.CustomerRole.ADMIN;
+import static com.jaarquesuoc.shop.customers.dtos.CustomerRole.CUSTOMER;
 
 @Service
 @RequiredArgsConstructor(onConstructor = @__(@Autowired))
@@ -36,9 +36,9 @@ public class SessionsService {
         return signup(customerDto, ADMIN);
     }
 
-    public Optional<CustomerDto> signup(final CustomerDto customerDto, final CustomerType customerType) {
+    public Optional<CustomerDto> signup(final CustomerDto customerDto, final CustomerRole customerRole) {
         customerDto.setPassword(encryptionService.encryptPassword(customerDto.getPassword()));
-        customerDto.setType(customerType);
+        customerDto.setRole(customerRole);
 
         return customersService.createCustomerDto(customerDto);
     }

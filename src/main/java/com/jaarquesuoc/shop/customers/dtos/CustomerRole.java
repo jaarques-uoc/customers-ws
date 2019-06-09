@@ -1,5 +1,5 @@
 package com.jaarquesuoc.shop.customers.dtos;
 
-public enum CustomerType {
+public enum CustomerRole {
     ADMIN, CUSTOMER
 }
