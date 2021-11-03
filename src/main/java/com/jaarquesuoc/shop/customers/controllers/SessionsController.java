@@ -20,12 +20,12 @@ public class SessionsController {
     @PostMapping("/login")
     public CustomerDto login(@RequestBody final CustomerDto customerDto) {
         return sessionsService.login(customerDto)
-            .orElseThrow(() -> new ResponseStatusException(UNAUTHORIZED));
+                .orElseThrow(() -> new ResponseStatusException(UNAUTHORIZED));
     }
 
     @PostMapping("/signup")
     public CustomerDto signup(@RequestBody final CustomerDto customerDto) {
         return sessionsService.customerSignup(customerDto)
-            .orElseThrow(() -> new ResponseStatusException(UNAUTHORIZED));
+                .orElseThrow(() -> new ResponseStatusException(UNAUTHORIZED));
     }
 }

@@ -26,7 +26,7 @@ public class CustomersService {
 
     public Optional<CustomerDto> getCustomerDto(final String id) {
         return customersRepository.findById(id)
-            .map(CustomersMapper.INSTANCE::toCustomerDto);
+                .map(CustomersMapper.INSTANCE::toCustomerDto);
     }
 
     public Optional<Customer> getCustomerByEmail(final String email) {

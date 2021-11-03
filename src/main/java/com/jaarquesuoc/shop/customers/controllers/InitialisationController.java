@@ -27,9 +27,9 @@ public class InitialisationController {
         sessionsService.customerSignup(buildSimpleCustomer());
 
         return InitialisationDto.builder()
-            .initialisationStatus(OK)
-            .metadata(customersService.getAllCustomerDtos())
-            .build();
+                .initialisationStatus(OK)
+                .metadata(customersService.getAllCustomerDtos())
+                .build();
     }
 
     private CustomerDto buildAdmin() {
@@ -42,11 +42,11 @@ public class InitialisationController {
 
     private CustomerDto buildCustomer(final String email, final String fullName) {
         return CustomerDto.builder()
-            .email(email)
-            .password("1234")
-            .fullName(fullName)
-            .address("Random Address street, 123")
-            .country("Andorra")
-            .build();
+                .email(email)
+                .password("1234")
+                .fullName(fullName)
+                .address("Random Address street, 123")
+                .country("Andorra")
+                .build();
     }
 }

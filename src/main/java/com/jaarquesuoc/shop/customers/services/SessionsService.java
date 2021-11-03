@@ -22,10 +22,11 @@ public class SessionsService {
 
     public Optional<CustomerDto> login(final CustomerDto customerDto) {
         return customersService.getCustomerByEmail(customerDto.getEmail())
-            .filter(
-                customer -> encryptionService.matchesPassword(customerDto.getPassword(), customer.getEncryptedPassword())
-            )
-            .map(CustomersMapper.INSTANCE::toCustomerDto);
+                .filter(
+                        customer -> encryptionService
+                                .matchesPassword(customerDto.getPassword(), customer.getEncryptedPassword())
+                )
+                .map(CustomersMapper.INSTANCE::toCustomerDto);
     }
 
     public Optional<CustomerDto> customerSignup(final CustomerDto customerDto) {

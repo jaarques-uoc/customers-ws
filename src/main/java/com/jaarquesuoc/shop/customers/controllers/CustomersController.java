@@ -21,7 +21,7 @@ public class CustomersController {
     @GetMapping("/customers/{id}")
     public CustomerDto getCustomer(@PathVariable final String id) {
         return customersService.getCustomerDto(id)
-            .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
     }
 
     @GetMapping("/customers")
